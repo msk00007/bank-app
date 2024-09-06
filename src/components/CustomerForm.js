@@ -1,6 +1,6 @@
-// CustomerForm.js
+// src/components/CustomerForm.js
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../api';
 
 function CustomerForm({ onSave, editCustomer }) {
   const [customer, setCustomer] = useState({ id: '', name: '', email: '', phone: '' });
@@ -19,15 +19,15 @@ function CustomerForm({ onSave, editCustomer }) {
     try {
       const method = editCustomer ? 'PUT' : 'POST';
       const url = editCustomer
-        ? `http://your-backend-api.com/customers/${customer.id}`
-        : 'http://your-backend-api.com/customers';
+        ? `/customers/${customer.id}`
+        : '/customers';
 
       if (editCustomer) {
-        // Update customer (PUT request)
-        await axios.put(url, customer);
+        // Update customer
+        await api.put(url, customer);
       } else {
-        // Add new customer (POST request)
-        await axios.post(url, customer);
+        // Add new customer
+        await api.post(url, customer);
       }
 
       onSave(customer);

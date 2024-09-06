@@ -1,21 +1,19 @@
-// LandingPage.js
+// src/components/LandingPage.js
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function LandingPage() {
+const LandingPage = () => {
   return (
-    <div style={{ textAlign: 'center', marginTop: '50px' }}>
-      <h1>Welcome to the Banking Application</h1>
-      <div>
-        <Link to="/admin-login">
-          <button style={{ margin: '10px' }}>Admin Login</button>
-        </Link>
-        <Link to="/customer-login">
-          <button style={{ margin: '10px' }}>Customer Login</button>
-        </Link>
-      </div>
+    <div>
+      <h1>Welcome to the Bank Application</h1>
+      <nav>
+        <ul>
+          <li><Link to="/customer-login">Customer Login</Link></li>
+          <li><Link to="/admin-login">Admin Login</Link></li>
+        </ul>
+      </nav>
     </div>
   );
-}
+};
 
 export default LandingPage;
